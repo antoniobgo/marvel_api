@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_200109) do
+ActiveRecord::Schema.define(version: 2021_03_23_002824) do
 
   create_table "characters", force: :cascade do |t|
     t.string "name"
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 2021_03_21_200109) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "uuid"
+  end
+
+  create_table "characters_comics", id: false, force: :cascade do |t|
+    t.integer "character_id", null: false
+    t.integer "comic_id", null: false
+    t.index ["character_id", "comic_id"], name: "index_characters_comics_on_character_id_and_comic_id"
+    t.index ["comic_id", "character_id"], name: "index_characters_comics_on_comic_id_and_character_id"
   end
 
   create_table "comics", force: :cascade do |t|
