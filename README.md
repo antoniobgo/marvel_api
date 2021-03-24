@@ -1,24 +1,22 @@
-# README
+# marvel_api
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Requires rails 6 or higher and ruby 2.7 or higher
 
-Things you may want to cover:
+### To install all depedencies:
+```
+bundle install
+```
 
-* Ruby version
+### To initialize and run migrations on db:
+```
+rake db:migrate
+```
 
-* System dependencies
+### To start server:
 
-* Configuration
+```
+rails s
+```
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## When running for the first time, it may take some minutes because the server gets all characters from marvel api and storages them.
