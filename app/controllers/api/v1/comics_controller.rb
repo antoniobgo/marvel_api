@@ -36,7 +36,6 @@ class Api::V1::ComicsController < ApplicationController
         data["results"].each do |comic|
             thumbnail = comic["thumbnail"]
             thumb = thumbnail["path"] + '.' + thumbnail["extension"]
-            byebug
             new_comic = Comic.new(title: comic["title"], description: comic["description"],
               variantDescription: comic["variantDescription"], pageCount: comic["pageCount"],
               cover: thumb)
