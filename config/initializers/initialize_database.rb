@@ -1,8 +1,8 @@
+## Initializer code so the server starts with character database updated
+
 require 'digest'
 require 'http'
 require 'json'
-## TODO
-# PEGAR O TOTAL -> fazer o while bonitin
 
 ts = '123456789012354'
 public_key = "b091e4f619436453d9a951e666a18be8"

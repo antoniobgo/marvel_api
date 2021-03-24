@@ -4,6 +4,8 @@ class Api::V1::CharactersController < ApplicationController
         render json: characters
     end
     def show
-        render json: Character.find(params[:id])
+      character = Character.find(params[:id])
+      return render :not_found unless character
+      render json: Character.find(params[:id])
     end
 end

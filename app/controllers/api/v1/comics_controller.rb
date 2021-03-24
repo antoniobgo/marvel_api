@@ -1,6 +1,6 @@
 class Api::V1::ComicsController < ApplicationController
-  def show
-    @character = Character.find(params[:id])
+  def index
+    @character = Character.find(params[:character_id])
     @total_comics = get_total_comics
     comics = get_comics(params[:pageNumber].to_i)
     render json: { comics: comics.as_json, total: @total_comics }
@@ -47,10 +47,9 @@ class Api::V1::ComicsController < ApplicationController
             end
         end
       end
-      @character.comics[offset..offset+19]
+      return @character.comics[offset..offset+19]
     else
-      @character.comics[offset..offset+19]
+      return @character.comics[offset..offset+19]
     end
-    
   end
 end

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   end
   namespace :api , defaults: { format: :json } do
     namespace :v1 do
-      resources :comics, only: [:show]
+      resources :comics, only: [:show, :index]
     end
   end
 end
