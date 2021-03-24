@@ -29,13 +29,14 @@ class Api::V1::ComicsController < ApplicationController
     hashed_params = Digest::MD5.hexdigest(params_concat)
     uri = 'https://gateway.marvel.com:443/v1/public/characters/'+@character.uuid.to_s+'/comics?ts='+ts+'&apikey='+public_key+'&hash='+hashed_params
     offset = 20 * (page_number - 1)
-    if @character.comics.count < (20*page_number) && @total_comics > Character.count
+    if @character.comics.count < (20*page_number) && @total_comics > @character.comics.count
       response = HTTP.get(uri, :params => {:offset => offset.to_s, :limit => "20"})
       if JSON.parse(response)["code"] == 200
         data = JSON.parse(response)["data"]
         data["results"].each do |comic|
             thumbnail = comic["thumbnail"]
             thumb = thumbnail["path"] + '.' + thumbnail["extension"]
+            byebug
             new_comic = Comic.new(title: comic["title"], description: comic["description"],
               variantDescription: comic["variantDescription"], pageCount: comic["pageCount"],
               cover: thumb)
